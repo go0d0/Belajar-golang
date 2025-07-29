@@ -4,11 +4,23 @@ import "fmt"
 
 var orang string
 
-func tes(nama string) string { //fungsi diluar main
+func berjalan(f func(string)string)string {
+
+
+return f("tt")
+}
+
+
+func tes1(data string)string{  // callback function
+return data+ "ngawur";
+}
+
+
+func tes(nama string, jalan func(string)string) string { //fungsi diluar main
 	if nama == "jokowi" {
 		return "halo " + nama
 	} //multiple return
-	return "anda siapa?"
+	return jalan("data tidak sesuai");  //callback
 }
 
 func main() {
@@ -57,5 +69,27 @@ func main() {
 		fmt.Println("nilai continue:", a)
 	}
 
-	fmt.Println(tes("jokowis")) //manggil fungsi tes
+	fmt.Println(tes("jokowis", tes1)) //manggil fungsi tes
+
+
+
+	angka := func (a,b int) int{
+return a*b
+	}(5,4)
+	fmt.Println("nilai anonymous angka:",angka);
+
+
+	karakter := func()string{
+
+		return "hallo string anonymous";
+}
+fmt.Println(karakter());
+
+simpan := berjalan(func (data string) string{
+
+return "halo "+data
+});
+
+fmt.Println(simpan);
+
 }
