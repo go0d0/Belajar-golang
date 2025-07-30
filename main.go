@@ -118,4 +118,11 @@ func main() {
 
 	mm := []int{11, 1234, 3}
 	fmt.Println("belajar slice: ", mm)
+
+	fmt.Println(append(mm, 999))
+
+	fmt.Println("digunakan: ", len(mm))
+	fmt.Println("\n")
+        qw := append(mm,66)
+	fmt.Println("tersedia: ",cap(qw))
 }
