@@ -2,27 +2,45 @@ package main
 
 import "fmt"
 
+func bClosure() func() int {
+
+	nilai := 0
+
+	return func() int { //closure
+
+		nilai++
+		return nilai // nested return
+	}
+
+}
+
+// tes logika pemanggilan ()() atau pemanggilan func return untuk dapat hasil
+func keDua() func() string {
+
+	return func() string {
+		return "halo nested"
+	}
+}
+
 var orang string
 
-func berjalan(f func(string)string)string {
+func berjalan(f func(string) string) string {
 
-
-return f("tt")
+	return f("tt")
 }
 
-
-func tes1(data string)string{  // callback function
-return data+ "ngawur";
+func tes1(data string) string { // callback function
+	return data + "ngawur"
 }
 
-
-func tes(nama string, jalan func(string)string) string { //fungsi diluar main
+func tes(nama string, jalan func(string) string) string { //fungsi diluar main
 	if nama == "jokowi" {
 		return "halo " + nama
 	} //multiple return
-	return jalan("data tidak sesuai");  //callback
+	return jalan("data tidak sesuai") //callback
 }
 
+// kode utama  @@@@@
 func main() {
 
 	umur := 12 // variabe umur
@@ -71,25 +89,33 @@ func main() {
 
 	fmt.Println(tes("jokowis", tes1)) //manggil fungsi tes
 
+	angka := func(a, b int) int {
+		return a * b
+	}(5, 4)
+	fmt.Println("nilai anonymous angka:", angka)
 
+	karakter := func() string {
 
-	angka := func (a,b int) int{
-return a*b
-	}(5,4)
-	fmt.Println("nilai anonymous angka:",angka);
+		return "hallo string anonymous"
+	}
+	fmt.Println(karakter())
 
+	simpan := berjalan(func(data string) string {
 
-	karakter := func()string{
+		return "halo " + data
+	})
 
-		return "hallo string anonymous";
-}
-fmt.Println(karakter());
+	fmt.Println(simpan)
 
-simpan := berjalan(func (data string) string{
+	fmt.Println(bClosure()())
+	fmt.Println(keDua()())
 
-return "halo "+data
-});
+	// array
+	var a = [2]int{23, 89}
+	fmt.Println("belajar array: ", a)
 
-fmt.Println(simpan);
+	// slice
 
+	mm := []int{11, 1234, 3}
+	fmt.Println("belajar slice: ", mm)
 }
