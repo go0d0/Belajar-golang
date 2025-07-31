@@ -112,17 +112,43 @@ func main() {
 
 	// array
 	var a = [2]int{23, 89}
-	fmt.Println("belajar array: ", a)
+	fmt.Println("belajar array: ", a) // print array
 
 	// slice
 
-	mm := []int{11, 1234, 3}
-	fmt.Println("belajar slice: ", mm)
+	mm := []int{11, 1234, 3}           // slice
+	fmt.Println("belajar slice: ", mm) // print slice
 
-	fmt.Println(append(mm, 999))
+	fmt.Println(append(mm, 999)) // append
 
-	fmt.Println("digunakan: ", len(mm))
-	fmt.Println("\n")
-        qw := append(mm,66)
-	fmt.Println("tersedia: ",cap(qw))
+	fmt.Println("digunakan: ", len(mm)) // len
+	fmt.Println("\n")                   // new line
+	qw := append(mm, 66)                // apend
+	fmt.Println("tersedia: ", cap(qw))  // cap
+
+	// for loop using range
+	for i, v := range mm {
+		fmt.Println("index: ", i, "valuenya :", v)
+	}
+
+	// map in go
+	var ahay map[string]int = map[string]int{
+		"satu": 1,
+		"dua":  2,
+	}
+
+	ahay["tiga"] = 3     // add key value "tiga" : 3
+	delete(ahay, "satu") // hapus key "satu"
+	val := ahay          // simpan ke val
+
+	fmt.Println(val) // print semua
+
+	// learn how to make struct in golang
+	type tesLagi struct {
+		nama   string
+		jumlah int
+	}
+	lg := tesLagi{"budi", 3}
+
+	fmt.Println(lg.nama)
 }
