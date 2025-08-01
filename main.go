@@ -2,6 +2,15 @@ package main
 
 import "fmt"
 
+type oring struct {
+	hidup    bool
+	bernafas int
+}
+
+func (x *oring) cobaAh() {
+	x.bernafas++
+}
+
 func bClosure() func() int {
 
 	nilai := 0
@@ -150,5 +159,44 @@ func main() {
 	}
 	lg := tesLagi{"budi", 3}
 
-	fmt.Println(lg.nama)
+	fmt.Println(lg)
+
+	// learn how to make embedded struct
+	type coba struct {
+		nama   string
+		jumlah int
+	}
+
+	type tinggi struct {
+		coba
+		kebenaran bool
+	}
+
+	var opini tinggi = tinggi{
+
+		coba: coba{
+			"joka", 5,
+		}, kebenaran: true,
+	}
+
+	fmt.Println(opini)
+
+	// method struct
+
+	var mq oring = oring{true, 5}
+	fmt.Println(mq)
+	fmt.Println("sebelum increment bernafas: ", mq.bernafas)
+	mq.cobaAh()
+	fmt.Println("setelah increment bernafas: ", mq.bernafas)
+
+	// basic pointer
+
+	qkl := 10
+
+	var zzz *int = &qkl
+
+	if zzz == &qkl {
+		fmt.Println(*zzz)
+	}
+
 }
