@@ -2,6 +2,23 @@ package main
 
 import "fmt"
 
+// manggil interface
+
+type manggil struct {
+	nama string
+	umur int
+}
+
+func (x *manggil) jalankan(data string, data1 string) {
+	fmt.Println(x.nama, x.umur)
+	fmt.Println("ini data1 interface: ", data, "ini adalah data2 interface: ", data1)
+}
+
+// learn make interface
+type bLajar interface {
+	jalankan(data string, data1 string)
+}
+
 type oring struct {
 	hidup    bool
 	bernafas int
@@ -199,4 +216,26 @@ func main() {
 		fmt.Println(*zzz)
 	}
 
+	//run interface
+	yyy := manggil{
+		"budi", 10,
+	}
+
+	yyy.jalankan("halo", "disana")
+
+	// interface kosong
+
+	var kosong interface{}
+
+	kosong = 5 // insert ke interface
+
+	switch pp := kosong.(type) { // cek tipe data
+	//cek kondisi apakah tipe data sesuai dengan tipe data variabel pp ?
+	case string:
+		fmt.Println("tipe adalah string: ", pp) // tampilin value
+	case bool:
+		fmt.Println("tipe adalah boolean: ", pp) // tampilin value
+	case int:
+		fmt.Println("tipe adalah integer: ", pp) // tampilin value
+	}
 }
