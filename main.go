@@ -1,6 +1,25 @@
 package main
 
-import "fmt"
+import (
+	"errors"
+	"fmt"
+)
+
+// fmt ErrorF
+func adaYgSalah() error {
+	waduh := errors.New("tes salah")
+	return fmt.Errorf("waduh ada yang salah, salah adalah: %w", waduh)
+
+}
+
+// fungsi error
+func salah(data1, data2 float64) (float64, error) {
+	if data2 == 0 {
+		return 0, errors.New("data tidak valid untuk operasi ")
+	}
+
+	return data1 / data2, nil
+}
 
 // manggil interface
 
@@ -238,4 +257,20 @@ func main() {
 	case int:
 		fmt.Println("tipe adalah integer: ", pp) // tampilin value
 	}
+
+	// tes manggil error
+	// kalau parameter kedua diganti jadi 3,
+	// maka variabel hasil akan berisi,
+	// 3.3333333333333335
+	hasil, err := salah(10, 3)
+
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	fmt.Println(hasil)
+
+	// manggil fmt errorf
+	fmt.Println(adaYgSalah())
+
 }
