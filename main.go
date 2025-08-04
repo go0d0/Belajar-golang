@@ -5,6 +5,27 @@ import (
 	"fmt"
 )
 
+// error with .as()
+type kesalahan struct {
+	code int
+}
+
+func (k kesalahan) Error() string {
+	return "hanya tes"
+}
+
+func memanggil() error {
+	ambil := kesalahan{12}
+	return fmt.Errorf("kesalahan program, dengan kode: %w", ambil)
+}
+
+// error is()
+var ngawur = errors.New("salah sekali")
+
+func fang() error {
+	return fmt.Errorf("terdapat error %w", ngawur)
+}
+
 // fmt ErrorF
 func adaYgSalah() error {
 	waduh := errors.New("tes salah")
@@ -63,7 +84,7 @@ func bClosure() func() int {
 func keDua() func() string {
 
 	return func() string {
-		return "halo nested"
+		return "halo nested" //multiple return
 	}
 }
 
@@ -262,15 +283,34 @@ func main() {
 	// kalau parameter kedua diganti jadi 3,
 	// maka variabel hasil akan berisi,
 	// 3.3333333333333335
-	hasil, err := salah(10, 3)
+	// hasil, err := salah(10, 0)
 
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
-	fmt.Println(hasil)
+	//	if err != nil {
+	//		fmt.Println(err)
+	//		return
+	//	}
+	//	fmt.Println(hasil)
 
 	// manggil fmt errorf
 	fmt.Println(adaYgSalah())
+
+	//cek dengan errors.As()
+
+	//  erur := memanggil()
+
+	//var kondisi kesalahan
+
+	//if errors.As(erur, &kondisi) {
+	//	fmt.Println("kesalahan dengan kode", kondisi.code)
+	//	return
+	//}
+
+	// cek dengan errors.is()
+	//halo := fang()
+
+	// if errors.Is(halo, ngawur) {
+	//	fmt.Println("berhasil cek dengan errors.is()")
+	//	return
+	//}
 
 }
