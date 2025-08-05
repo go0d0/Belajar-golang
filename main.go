@@ -313,4 +313,11 @@ func main() {
 	//	return
 	//}
 
+	// type assertion
+
+	var data interface{} = "hello"
+
+	xx := data.(string)
+	fmt.Println(xx, "dunia!")
+
 }
