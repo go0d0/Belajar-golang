@@ -5,6 +5,25 @@ import (
 	"fmt"
 )
 
+// custom error
+type custom struct {
+	bagian string
+	pesan  string
+}
+
+// func custom error
+
+func (c *custom) Error() string {
+	return fmt.Sprintf("fatal error terjadi di %s, dengan pesan error %s", c.bagian, c.pesan)
+}
+
+func menjalankan(data string) error {
+	if len(data) < 6 {
+		return &custom{"username", "kurang dari 6"}
+	}
+	return nil
+}
+
 // error with .as()
 type kesalahan struct {
 	code int
@@ -319,5 +338,19 @@ func main() {
 
 	xx := data.(string)
 	fmt.Println(xx, "dunia!")
+
+	// run custom error
+	// x := menjalankan("si")
+	// fmt.Println("output sebelum sanitasi type assetion", ", ", x)
+	// if x != nil {
+	// 	fmt.Println("terjadi kesalahan!")
+	// 	if ni, bl := x.(*custom); bl {
+	// 		fmt.Println("output custom: ", ni.bagian)
+	// 		return
+	// 	}
+
+	// } else {
+	// 	fmt.Println("username anda sudah sesuai")
+	// }
 
 }
