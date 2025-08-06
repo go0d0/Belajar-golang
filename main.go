@@ -3,6 +3,8 @@ package main
 import (
 	"errors"
 	"fmt"
+
+jalan	"coba/tes2" // alias bentrok tes1
 )
 
 // custom error
@@ -352,5 +354,5 @@ func main() {
 	// } else {
 	// 	fmt.Println("username anda sudah sesuai")
 	// }
-
+	jalan.Halo()  // run coba/tes2/sukses.go
 }
