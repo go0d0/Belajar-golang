@@ -1,11 +1,21 @@
 package main
 
 import (
+	jalan "coba/tes2" // alias bentrok tes1
 	"errors"
 	"fmt"
-
-jalan	"coba/tes2" // alias bentrok tes1
+	"sync"
+	"time"
 )
+
+// func goroutine
+func berjalanlah(data string, wi *sync.WaitGroup) {
+	defer wi.Done()
+	for i := 1; i <= 3; i++ {
+		fmt.Printf("%s, (%d)", data, i)
+	}
+	time.Sleep(5000 * time.Millisecond)
+}
 
 // custom error
 type custom struct {
@@ -354,5 +364,18 @@ func main() {
 	// } else {
 	// 	fmt.Println("username anda sudah sesuai")
 	// }
-	jalan.Halo()  // run coba/tes2/sukses.go
+
+	// belajar package & module access
+	jalan.Halo() // run coba/tes2/sukses.go
+
+	//learn  goroutine
+	var ww sync.WaitGroup
+
+	ww.Add(1)
+
+	go berjalanlah("halo dari goroutine", &ww)
+
+	ww.Wait()
+
+	fmt.Println("output setelah goroutine")
 }
