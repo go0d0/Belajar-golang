@@ -378,4 +378,14 @@ func main() {
 	ww.Wait()
 
 	fmt.Println("output setelah goroutine")
+
+
+	// learn channel
+	ch := make(chan string)
+
+	go func(){
+ch <- "monyet"
+	}()
+
+	fmt.Println(<-ch)
 }
