@@ -1,11 +1,8 @@
-package tes1
+package tes2
 
 import "fmt"
 
-
-
-func Halo(){
-fmt.Println("berhasilll")
-
+func Halo() {
+	fmt.Println("berhasilll")
 
 }

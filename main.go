@@ -1,7 +1,7 @@
 package main
 
 import (
-	jalan "coba/tes2" // alias bentrok tes1
+	"coba/tes2"
 	"errors"
 	"fmt"
 	"sync"
@@ -14,7 +14,7 @@ func berjalanlah(data string, wi *sync.WaitGroup) {
 	for i := 1; i <= 3; i++ {
 		fmt.Printf("%s, (%d)", data, i)
 	}
-	time.Sleep(5000 * time.Millisecond)
+	time.Sleep(500 * time.Millisecond)
 }
 
 // custom error
@@ -366,7 +366,7 @@ func main() {
 	// }
 
 	// belajar package & module access
-	jalan.Halo() // run coba/tes2/sukses.go
+	tes2.Halo() // run coba/tes2/sukses.go
 
 	//learn  goroutine
 	var ww sync.WaitGroup // data type waitgroup
@@ -397,4 +397,25 @@ func main() {
 	cihuy <- 3                                            // assign 3 as value
 	fmt.Println("nilai channel pertama adalah ", <-cihuy) // print channel
 	fmt.Println("nilai channel kedua adalah ", <-cihuy)   // print channel
+
+	// learn basic select
+	var ceha chan string = make(chan string)
+	ceha1 := make(chan string)
+	go func() {
+
+		ceha <- "kasi nilai"
+	}()
+
+	go func() {
+
+		ceha1 <- "kasi lagi dong"
+	}()
+
+	select {
+	case msg := <-ceha:
+		fmt.Println("pesan ch 1 : ", msg)
+	case msg1 := <-ceha1:
+		fmt.Println("pesan ch 2 : ", msg1)
+	}
+
 }
