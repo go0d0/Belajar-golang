@@ -256,13 +256,13 @@ func main() {
 	}
 
 	type tinggi struct {
-		coba
+		coba      // embedded struct
 		kebenaran bool
 	}
 
 	var opini tinggi = tinggi{
 
-		coba: coba{
+		coba: coba{ //declaration value of struct
 			"joka", 5,
 		}, kebenaran: true,
 	}
@@ -369,23 +369,32 @@ func main() {
 	jalan.Halo() // run coba/tes2/sukses.go
 
 	//learn  goroutine
-	var ww sync.WaitGroup
+	var ww sync.WaitGroup // data type waitgroup
 
-	ww.Add(1)
+	ww.Add(1) // add 1 task
 
-	go berjalanlah("halo dari goroutine", &ww)
+	go berjalanlah("halo dari goroutine", &ww) // argument with pointer
 
-	ww.Wait()
+	ww.Wait() // wait until goroutine and for loop done
 
-	fmt.Println("output setelah goroutine")
-
+	fmt.Println("output setelah goroutine") // just info, info goroutine is success
 
 	// learn channel
-	ch := make(chan string)
+	ch := make(chan string) // unbuffered channel
 
-	go func(){
-ch <- "monyet"
-	}()
+	go func() {
+		ch <- "monyet"
+	}() // goroutine
 
-	fmt.Println(<-ch)
+	fmt.Println(<-ch) // call and print channel
+
+	time.Sleep(500 * time.Millisecond) // sleep 0.5 seconds
+	// buffered channel
+
+	cihuy := make(chan int, 2) // slot 2 value
+
+	cihuy <- 5                                            // assign 5 as value
+	cihuy <- 3                                            // assign 3 as value
+	fmt.Println("nilai channel pertama adalah ", <-cihuy) // print channel
+	fmt.Println("nilai channel kedua adalah ", <-cihuy)   // print channel
 }
