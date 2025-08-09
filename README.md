@@ -1,4 +1,4 @@
-# 🚀 Perjalanan Belajar Go (Golang) Saya
+#  Perjalanan Belajar Go (Golang)
 
 Selamat datang di repositori perjalanan belajar Go saya! Repositori ini adalah kumpulan kode yang saya tulis sambil mempelajari berbagai konsep dalam bahasa pemrograman Go, mulai dari dasar hingga konkurrensi. Semua contoh kode ada di dalam file `main.go`.
 
