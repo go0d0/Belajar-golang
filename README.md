@@ -47,18 +47,18 @@ Selamat datang di repositori perjalanan belajar Go saya! Repositori ini adalah k
 Deklarasi dan inisialisasi variabel.
 ```go
 umur := 12      // Deklarasi singkat
-orang = "tono" // Variabel package-level
+orang = "Person" // Variabel package-level
 ```
 
 #### Kondisi `if-else`
 Pengecekan kondisi untuk mengontrol alur program.
 ```go
-if orang == "jaki" {
+if orang == "Orang" {
     fmt.Println("halo", orang)
-} else if orang == "tono" {
+} else if orang == "Person" {
     fmt.Println("halo", orang)
 } else {
-    fmt.Println("ngawur")
+    fmt.Println("tidak dikenali")
 }
 ```
 
@@ -104,7 +104,7 @@ for a := 0; a < 5; a++ {
 Fungsi yang dipanggil dari `main` dengan parameter.
 ```go
 func tes(nama string, jalan func(string) string) string {
-    if nama == "jokowi" {
+    if nama == "Abc" {
         return "halo " + nama
     }
     return jalan("data tidak sesuai")
@@ -115,11 +115,11 @@ func tes(nama string, jalan func(string) string) string {
 Fungsi yang menjadi argumen untuk fungsi lain.
 ```go
 func tes1(data string) string { // callback function
-    return data + "ngawur"
+    return data + ", mohon diperiksa lagi"
 }
 
 // Memanggil fungsi `tes` dengan `tes1` sebagai callback
-fmt.Println(tes("jokowis", tes1))
+fmt.Println(tes("John doe", tes1))
 ```
 
 #### Fungsi Anonim
@@ -223,7 +223,7 @@ type tinggi struct {
 }
 
 var opini tinggi = tinggi{
-    coba: coba{"joka", 5},
+    coba: coba{"Qwerty", 5},
     kebenaran: true,
 }
 ```
@@ -324,7 +324,7 @@ func adaYgSalah() error {
 #### Pengecekan Error (`errors.Is`)
 Memeriksa apakah sebuah error dalam rantai error (error chain) sama dengan error target.
 ```go
-var ngawur = errors.New("salah sekali")
+var ngawur = errors.New("kesalahan fatal")
 
 func fang() error {
 	return fmt.Errorf("terdapat error %w", ngawur)
@@ -406,7 +406,7 @@ Channel digunakan oleh goroutine untuk berkomunikasi dan sinkronisasi.
 // Unbuffered Channel (sinkron)
 ch := make(chan string)
 go func() {
-    ch <- "monyet" // Mengirim data ke channel
+    ch <- "tes123" // Mengirim data ke channel
 }()
 fmt.Println(<-ch) // Menerima data dari channel
 
