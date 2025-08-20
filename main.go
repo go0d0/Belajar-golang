@@ -51,7 +51,7 @@ func memanggil() error {
 }
 
 // error is()
-var ngawur = errors.New("salah sekali")
+var ngawur = errors.New("kesalahan fatal")
 
 func fang() error {
 	return fmt.Errorf("terdapat error %w", ngawur)
@@ -127,33 +127,33 @@ func berjalan(f func(string) string) string {
 }
 
 func tes1(data string) string { // callback function
-	return data + "ngawur"
+	return data + ", mohon periksa lagi"
 }
 
 func tes(nama string, jalan func(string) string) string { //fungsi diluar main
-	if nama == "jokowi" {
+	if nama == "Abc" {
 		return "halo " + nama
 	} //multiple return
 	return jalan("data tidak sesuai") //callback
 }
 
-// kode utama  @@@@@
+// kode utama  
 func main() {
 
 	umur := 12 // variabe umur
 
-	orang = "tono" // variabel orang
+	orang = "Person" // variabel orang
 
 	//cek value orang == "jaki"  atau == "tono" atau yang lain
-	if orang == "jaki" {
+	if orang == "Orang" {
 		fmt.Println("halo", orang)
-	} else if orang == "tono" {
+	} else if orang == "Person" {
 
 		fmt.Println("halo", orang)
 
 	} else {
 
-		fmt.Println("ngawur")
+		fmt.Println("tidak dikenali")
 	}
 
 	// pengecekan kondisi umur
@@ -184,7 +184,7 @@ func main() {
 		fmt.Println("nilai continue:", a)
 	}
 
-	fmt.Println(tes("jokowis", tes1)) //manggil fungsi tes
+	fmt.Println(tes("John doe", tes1)) //manggil fungsi tes
 
 	angka := func(a, b int) int {
 		return a * b
@@ -263,7 +263,7 @@ func main() {
 	var opini tinggi = tinggi{
 
 		coba: coba{ //declaration value of struct
-			"joka", 5,
+			"Qwerty", 5,
 		}, kebenaran: true,
 	}
 
@@ -383,7 +383,7 @@ func main() {
 	ch := make(chan string) // unbuffered channel
 
 	go func() {
-		ch <- "monyet"
+		ch <- "tes123"
 	}() // goroutine
 
 	fmt.Println(<-ch) // call and print channel
